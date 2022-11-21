@@ -8,12 +8,10 @@ function showCocktail(response) {
     response.data.drinks[0].strDrinkThumb;
 }
 function searchCocktail(event) {
-  event.preventdefault();
-  let cocktailInputName = document.querySelector("#input-text").value;
-  console.log(cocktailInputName);
-  let apiUrl =
-    "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita";
-  axios.get(`${apiUrl}`).then(showCocktail);
+  event.preventDefault();
+  let cocktailName = document.querySelector("#input-text").value;
+  let apiUrl = "https://www.thecocktaildb.com/api/json/v1/1/search.php";
+  axios.get(`${apiUrl}?s=${cocktailName}`).then(showCocktail);
 }
 let searchForm = document.querySelector("#cocktail-search-form");
 searchForm.addEventListener("submit", searchCocktail);
